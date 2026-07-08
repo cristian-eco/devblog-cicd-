@@ -23,7 +23,7 @@ function initializeApp() {
 
 function initializeTooltips() {
     // Inicializar tooltips de Bootstrap si existen 
-    var tooltipTriggerList = [].slice.call(document.querySelectorAll('[databs - toggle="tooltip"]')); 
+    var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
     var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
         return new bootstrap.Tooltip(tooltipTriggerEl);
     });
@@ -59,7 +59,7 @@ function initializeFormValidation() {
         createPostForm.addEventListener('submit', function (e) {
             if (!validateForm()) {
                 e.preventDefault();
-                showAlert('Por favor corrige los errores antes de continuar', 'danger'); 
+                showAlert('Por favor corrige los errores antes de continuar', 'danger');
             }
         });
     }
@@ -73,9 +73,9 @@ function validateTitle(input) {
     if (title.length === 0) {
         setInputState(input, false, 'El título es requerido');
     } else if (title.length > 200) {
-        setInputState(input, false, 'El título no puede tener más de 200 caracteres'); 
+        setInputState(input, false, 'El título no puede tener más de 200 caracteres');
     } else if (title.length < 5) {
-        setInputState(input, false, 'El título debe tener al menos 5 caracteres'); 
+        setInputState(input, false, 'El título debe tener al menos 5 caracteres');
     } else {
         setInputState(input, true, '¡Título válido!');
     }
@@ -97,7 +97,7 @@ function setInputState(input, isValid, message) {
     input.classList.remove('is-valid', 'is-invalid');
     input.classList.add(isValid ? 'is-valid' : 'is-invalid');
 
-    let feedback = input.parentNode.querySelector('.invalid-feedback, .valid - feedback');
+    let feedback = input.parentNode.querySelector('.invalid-feedback, .valid-feedback');
     if (!feedback) {
         feedback = createFeedbackElement(input);
     }
@@ -169,10 +169,8 @@ function updateWordCount(textareaId) {
         textarea.parentNode.appendChild(counter);
     }
 
-    const readingTime = Math.ceil(wordCount / 200); // ~200 palabras por 
-    minuto
-    counter.textContent = `${wordCount} palabras • ~${readingTime} min de 
-lectura`;
+    const readingTime = Math.ceil(wordCount / 200); // ~200 palabras por minuto
+    counter.textContent = `${wordCount} palabras • ~${readingTime} min de lectura`;
 }
 
 /* ================================ 
@@ -262,9 +260,7 @@ function showAlert(message, type = 'info') {
     alert.className = `alert alert-${type} alert-dismissible fade show`;
     alert.innerHTML = ` 
         ${message} 
-        <button type="button" class="btn-close" data-bs
-dismiss="alert"></button> 
-    `;
+        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>`;
 
     alertContainer.insertBefore(alert, alertContainer.firstChild);
 
@@ -321,13 +317,10 @@ window.previewPost = function () {
         <!DOCTYPE html> 
         <html> 
         <head> 
- <title>Vista Previa - ${title}</title> 
-            <link 
-href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.cs
-s" rel="stylesheet"> 
+<title>Vista Previa - ${title}</title> 
+            <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"> 
             <style> 
-                body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, 
-sans-serif; } 
+                body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; } 
                 .content p { margin-bottom: 1.5rem; line-height: 1.8; } 
             </style> 
         </head> 
@@ -337,8 +330,7 @@ sans-serif; }
                     <div class="card-body"> 
                         <h1>${title}</h1> 
                         <div class="text-muted mb-3"> 
-                            <small>Por: ${author} • ${new
-            Date().toLocaleDateString()}</small> 
+                            <small>Por: ${author} • ${new Date().toLocaleDateString()}</small> 
                         </div> 
                         <div class="content"> 
                             ${content.split('\n\n').map(p => p.trim() ?
@@ -347,8 +339,7 @@ sans-serif; }
                     </div> 
                 </div> 
                 <div class="mt-3"> 
-                    <button class="btn btn-secondary" 
-onclick="window.close()">Cerrar Vista Previa</button> 
+                    <button class="btn btn-secondary" onclick="window.close()">Cerrar Vista Previa</button> 
                 </div> 
             </div> 
         </body> 

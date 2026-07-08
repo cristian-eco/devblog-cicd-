@@ -90,7 +90,7 @@ USER appuser
 # Esto es documentativo - le dice a otros desarrolladores qué puerto usar 
 # No abre automáticamente el puerto (eso se hace al ejecutar el contenedor) 
 #Cambiar para  produccion
-EXPOSE $PORT 
+EXPOSE 5000
 
 # ================================
 # ETAPA 8: COMANDO DE INICIO 
